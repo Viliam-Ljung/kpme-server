@@ -1,2 +1,6 @@
 bin/
 test/
+
+# Dumb stuff
+.vscode
+a.exe

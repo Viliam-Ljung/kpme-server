@@ -6,6 +6,7 @@
 #include <sys/types.h>
 
 #ifdef __unix
+	#define PLATFORM_UNIX
 	#include <unistd.h>
 	#include <netinet/in.h>
 	#include <netdb.h>
@@ -14,6 +15,7 @@
 #endif
 
 #ifdef _WIN32
+	#define PLATFORM_WINDOWS
 	#include <winsock2.h>
 #endif
 

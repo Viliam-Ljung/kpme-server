@@ -3,16 +3,20 @@
 void sock_init(int, struct sockaddr_in*);
 void handle_client(int);
 
+void wsa_startup();
+
 int main(int argc, char** argv) {
 	struct sockaddr_in sv_addr, cli_addr;
 	unsigned int len;
 	int sockfd, connfd, err;
 
-	len = 0;
-	
+	len = sizeof(struct sockaddr_in);
+
+	wsa_startup();
+
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-	if(sockfd == -1) {
-		printf("fuck you\n");
+	if (sockfd == SOCKET_ERROR) {
+		printf("Couldn't create socket!\n");
 		exit(1);
 	}
 
@@ -20,5 +24,5 @@ int main(int argc, char** argv) {
 
 	connfd = accept(sockfd, (struct sockaddr*)&cli_addr, &len);
 
-	handle_client(connfd);	
+	handle_client(connfd);
 }

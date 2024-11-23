@@ -10,14 +10,14 @@ void sock_init(int sockfd, struct sockaddr_in* sv_addr) {
 	sv_addr->sin_addr.s_addr = htonl(INADDR_ANY);
 
 	err = bind(sockfd, (struct sockaddr*)sv_addr, sizeof(struct sockaddr_in));
-	if(err != 0) {
+	if(err != NO_ERROR) {
 		printf("no bind :(\n");
 		exit(1);
 	}
 
 	err = listen(sockfd, 5);
-	if(err != 0) {
+	if(err != NO_ERROR) {
 		printf("no listen :(\n");
 		exit(1);
 	}
-} 
+}
