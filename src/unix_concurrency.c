@@ -2,14 +2,14 @@
 
 #ifdef PLATFORM_UNIX
 
-int handle_client(int clientfd, void (*handler)(int)) {
+void handle_client(int clientfd, void (*handler)(int)) {
 	int pid;
 
 	pid = fork();
 	if(pid == 0) 
 		(*handler)(clientfd);
-	else
-		return pid;
+	if(pid < 0)
+		printf("something went wrong when starting a client thread\n");
 }
 
 #endif

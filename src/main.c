@@ -1,7 +1,7 @@
 #include <kpme_sv.h>
 
 void sock_init(int, struct sockaddr_in*);
-int handle_client(int, void (*)(int));
+void handle_client(int, void (*)(int));
 
 void wsa_startup();
 
