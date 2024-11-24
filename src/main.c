@@ -14,12 +14,12 @@ void hand(int fd) {
 
 	while(1) {
 		len = recv(fd, buffer, 1024, 0);
-
+		printf("here %d\n", len);
 		printf("%s\n", buffer);
 
 		write(fd, "hello", 5);
 
-		if(buffer[0]=='H') {
+		if(buffer[0]=='H' || len == 0 || len == -1) {
 			break;
 		}
 	}
